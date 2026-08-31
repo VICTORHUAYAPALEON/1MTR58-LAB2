@@ -10,23 +10,24 @@ Reconocimiento de patrones aplicado a **Eye Tracking** y **electrooculografía (
 
 - `01_EyeTracking.ipynb`: Experiencia 1 – detección ocular, cálculo de EAR, calibración, PERCLOS y pruebas de robustez.
 - `02_EOG_Procesamiento.ipynb`: Experiencia 2 – carga, exploración, construcción de EOGh/EOGv, preprocesamiento, segmentación, ventaneo y extracción de características.
-- `03_GripperVirtual.py`: HMI para demostrar la acción del clasificador sobre un gripper virtual.
-- `hmi_demo.csv`: archivo de prueba para verificar el funcionamiento de la HMI.
+- `03_GripperVirtual.py`: HMI para demostrar la relación entre una clase EOG y la acción del gripper virtual.
+- `hmi_demo.csv`: archivo de prueba para ejecutar la HMI en modo demo.
 - `data/`: archivos EOG utilizados durante la sesión.
 - `requirements.txt`: dependencias del laboratorio.
 
 ## Preparación del entorno
 
-Se recomienda trabajar con **Python 3.11 o 3.12**.
+Para evitar problemas de compatibilidad se proporciona un entorno preparado con **Python 3.12**.
 
-1. Abra el notebook `.ipynb` en Visual Studio Code.
-2. Seleccione Python 3.11 o 3.12 como intérprete.
-3. Si VS Code lo solicita, cree un entorno virtual (`venv`).
-4. Seleccione ese mismo entorno como **kernel** del notebook.
-5. Ejecute la primera celda; esta verificará e instalará las librerías necesarias.
-6. Si se instalaron dependencias, reinicie el kernel y ejecute nuevamente desde el inicio.
+1. Descargue el repositorio.
+2. En **Releases**, descargue `python312_lab2.zip`.
+3. Descomprímalo dentro de la carpeta principal del repositorio, de modo que quede la carpeta `python/`.
+4. Abra el notebook `.ipynb` en Visual Studio Code.
+5. Seleccione como intérprete el archivo `python/python.exe`.
+6. Seleccione como **kernel** ese mismo entorno.
+7. Ejecute la primera celda y verifique el mensaje `✓ Entorno listo. Puede continuar con el laboratorio.`
 
-> El kernel debe corresponder al mismo entorno virtual donde se instalaron las librerías.
+> El intérprete y el kernel deben apuntar al mismo `python.exe`.
 
 ## Trabajo durante la sesión
 
@@ -46,20 +47,31 @@ Flujo general:
 
 A partir de los datos de los siete sujetos, cada grupo deberá:
 
-- entrenar y comparar al menos dos modelos supervisados;
-- reservar un sujeto para evaluación;
+- entrenar y comparar **dos modelos supervisados**;
+- reservar un sujeto completo para prueba;
+- comparar el desempeño de ambos modelos;
 - seleccionar y evaluar el modelo final;
 - exportar el modelo y los objetos de preprocesamiento necesarios;
-- integrar el resultado con `03_GripperVirtual.py` como prueba de concepto de HMI.
+- ejecutar `03_GripperVirtual.py` como demostración de la HMI.
 
 El código desarrollado para el informe debe mantenerse en el repositorio GitHub del grupo.
 
 ## HMI
 
-La correspondencia utilizada en la demostración es:
+La correspondencia utilizada es:
 
 - Clase 1: saccade outward → **abrir**.
 - Clase 2: return saccade → **cerrar**.
 - Clase 3: blink → **rotar / confirmar**.
 
-`hmi_demo.csv` permite probar la interfaz sin utilizar todavía un modelo entrenado.
+Para ejecutar la demostración:
+
+```bash
+python 03_GripperVirtual.py
+```
+
+El programa utiliza automáticamente `hmi_demo.csv` para mostrar la correspondencia entre las clases y las acciones del gripper. La integración con un archivo propio de características y el modelo entrenado queda disponible como uso opcional.
+
+## Video del informe
+
+El video debe tener una duración máxima de **2 minutos** y puede ser grabado por **un solo integrante del grupo**, mostrando su pantalla durante la ejecución de la HMI y la evidencia solicitada en el informe.
