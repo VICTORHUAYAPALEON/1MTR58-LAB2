@@ -2,11 +2,17 @@
 1MTR58 - LAB2
 Simulador HMI de gripper virtual controlado mediante EOG
 
-Modo demo:
-    python 03_GripperVirtual.py --data hmi_demo.csv
+Uso para el informe:
+    python 03_GripperVirtual.py
 
-Modo con modelo entrenado:
-    python 03_GripperVirtual.py --data hmi_stream.csv --model modelo_grupo.joblib
+El archivo hmi_demo.csv se carga automáticamente y permite verificar
+la correspondencia clase -> acción del gripper.
+
+Uso opcional con un modelo entrenado:
+    python 03_GripperVirtual.py --data archivo_features.csv --model modelo_grupo.joblib
+
+En modo modelo, el CSV debe contener las mismas características
+utilizadas durante el entrenamiento.
 """
 
 import argparse
